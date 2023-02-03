@@ -2,7 +2,7 @@
 /*
  * Plugin Name:       ETag Management
  * Description:       Create and handles Entity Tag for better cache efficiency.
- * Version:           1.0
+ * Version:           1.0.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Matheus Misumoto
@@ -21,12 +21,12 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'PLUGIN_NAME_VERSION', '1.0.1' );
 
 
 if( ! function_exists( 'etag_get_last_modified' ) ) {
     function etag_get_last_modified() {
-        $last_modified = get_the_modified_date('U');
+        $last_modified = get_post_modified_time('U', true);
     
         // Set last-modified
         // If there are comments attached to this post object, find the mtime of
