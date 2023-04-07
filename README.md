@@ -5,7 +5,7 @@ This simple plugin generates Entity Tag (ETag) headers for WordPress posts and p
 ## Getting Started
 
 To install this plugin, you can download the .zip file and upload the plugin to your website using the Administration Panel.
-x
+
 ## Requirements
 - WordPress 6.0+
 - PHP 7.4+
@@ -21,10 +21,11 @@ Second, the content of the page itself. A hash is created based on the full HTML
 Then, ETag Managment checks if:
 
 - The user is not logged in, to avoid caching while editing the WordPress website,
-- The cached last-modified timestamp header matches with the timestamp of the page on server,
 - And the cached ETag header matches with the ETag generated on the request, both weak and strong validators.
 
-If all requirements match, ETag Management makes the WordPress website returns a HTTP 304 Not Modified response. Therefore, the browser will retrieve the cached version in users' local storage and saving network bandwidth.
+If all requirements match, ETag Management makes the WordPress website returns a HTTP 304 Not Modified response. Therefore, the browser will retrieve the cached version in users' local storage, saving network bandwidth.
+
+This plugin also includes the last modified date of the post or page on headers.
 
 ---
 Developed with ☕ by [Matheus Misumoto](https://matheusmisumoto.dev/) in Santos, Brazil

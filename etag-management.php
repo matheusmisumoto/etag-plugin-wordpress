@@ -2,7 +2,7 @@
 /*
  * Plugin Name:       ETag Management
  * Description:       Create and handles Entity Tag for better cache efficiency.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Matheus Misumoto
@@ -76,8 +76,8 @@ if ( ! function_exists( 'etag_check' ) ) {
         $last_modified  = etag_get_last_modified();
         $etag           = etag_generate_headers($last_modified, $buffer);
 
-        // if the user is not logged in and last modified date is same as "HTTP_IF_MODIFIED_SINCE", send 304 then exit
-        if ( !is_user_logged_in() && (int)$modified_since === (int)$last_modified && ( "W/".addslashes($etag) === $etag_header || $etag === $etag_header ) ) {
+        // If the user is not logged in and the ETag generated matches, send 304 then exit
+        if ( !is_user_logged_in() && ( "W/".addslashes($etag) === $etag_header || $etag === $etag_header ) ) {
             header( $_SERVER['SERVER_PROTOCOL'] . " 304 Not Modified" );
             exit;
         } 
